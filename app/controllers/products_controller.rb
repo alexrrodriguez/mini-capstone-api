@@ -15,18 +15,18 @@ class ProductsController < ApplicationController
   def one_product
     product_id = params["id"]
     product = Product.find_by(id: product_id)
-    render json: product.as_json
+    render json: product
   end
 
   def index
     products = Product.all
-    render json: products.as_json
+    render json: products
   end
 
   def show
     product_id = params["id"]
     product = Product.find(product_id)
-    render json: product.as_json
+    render json: product
   end
 
   def create
@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
       description: params["description"]
     )
     product.save
-    render json: product.as_json
+    render json: product
   end
 
   def update
@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
     product.description = params["description"] || product.description
 
     product.save
-    render json: product.as_json
+    render json: product
   end
 
   def destroy
