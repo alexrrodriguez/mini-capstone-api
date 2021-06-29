@@ -8,6 +8,7 @@ class Product < ApplicationRecord
 
   belongs_to :supplier
   
+  
   # def supplier
   #   Supplier.find_by(id: supplier_id)
   # end
