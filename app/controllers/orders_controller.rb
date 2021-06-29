@@ -1,12 +1,8 @@
 class OrdersController < ApplicationController
   
   def index
-    if current_user
-      order = Order.all
-      render json: order
-    else
-      render json: {errors: order.errors.full_messages}
-    end
+    orders = current_user.orders
+    render json: orders
   end
 
   def create
@@ -31,12 +27,8 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if current_user
       order = current_user.orders.find_by(id: params[:id])
       render json: order
-    else
-      render json: {errors: order.errors.full_messages}
-    end
   end
 
 end
