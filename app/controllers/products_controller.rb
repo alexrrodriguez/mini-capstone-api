@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
     render json: products
     else
       render json: []
+    end
   end
 
   def show
@@ -21,7 +22,8 @@ class ProductsController < ApplicationController
       price: params["price"],
       image_url: params["image_url"],
       description: params["description"],
-      itemcount: params["itemcount"]
+      itemcount: params["itemcount"],
+      supplier_id: params["supplier_id"]
     )
     if product.save
       render json: product
@@ -40,6 +42,7 @@ class ProductsController < ApplicationController
     product.image_url = params["image_url"] || product.image_url
     product.description = params["description"] || product.description
     product.itemcount = params["itemcount"] || product.itemcount
+    product.supplier_id = params["supplier_id"] || product.supplier_id
 
     if product.save
       render json: product
