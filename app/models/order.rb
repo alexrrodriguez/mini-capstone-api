@@ -4,7 +4,6 @@ class Order < ApplicationRecord
   has_many :products, through :carted_products
 
   def money_math
-    carted_products = current_user.cartedProducts.where(status: "carted")
     calculated_subtotal = 0
     carted_products.each do |carted_product|
       calculated_subtotal += carted_product.quantity * carted_product.product.price 
